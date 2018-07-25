@@ -3,7 +3,7 @@ spring:
     driver-class-name: 
     url: 
     username: 
-    password: 
+    password: '{cipher}9638566b8a83e77310274d353dfac70893b3cd787c47177675477ad23540c257'
   redis:
     host: localhost
     lettuce:
@@ -13,6 +13,6 @@ spring:
         max-wait: -1
         min-idle: 0
     database: 20
-    password: ''
+    password: '{cipher}8de5a43f2956563bc7b7cdadb2217fb24caa8c686af21c2e2e912edb83b1db89'
     port: 6379
     #timeout: 0
