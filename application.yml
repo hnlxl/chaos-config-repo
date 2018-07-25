@@ -1,0 +1,55 @@
+#*********************************************************************************************************************
+# default properties of every micro-services
+#*********************************************************************************************************************
+info:
+  description: Chaos Cloud System base on Spring Cloud
+  url: https://github.com/teclxl/chaos
+
+# timeout
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
+ribbon:
+  ConnectTimeout: 3000
+  ReadTimeout: 60000
+
+# enable web mode refresh
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info,health,refresh 
+
+# jpa & hibernate config
+spring.jpa:
+  hibernate:
+    naming:
+      implicit-strategy: component-path
+
+#feign&hystrix
+feign:
+  hystrix:
+    enabled: true
+
+---
+spring.profiles: test
+#*********************************************************************************************************************
+# Default properties of (unit)test profile
+#*********************************************************************************************************************
+# Logging level to debug
+logging:
+  level:
+    xyz:
+      devlxl:
+        chaos: DEBUG
+# When unit testing allow override, because of some test cases maybe need set special properties via @SpringBootTest(properties = {}).
+spring.cloud.config:
+      allow-override: true
+      override-none: true
+# Clear the database properties by overwriting, will use H2
+spring.datasource:
+    driver-class-name: ''
+    password: ''
+    url: ''
+    username: ''
+# Use a separate Redis
+spring.redis:
+  database: 10
